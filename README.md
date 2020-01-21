@@ -6,7 +6,7 @@ Provide a very brief demonstration to show that Amazon Redshift's query optimize
 
 I recently had a customer ask whether Redshift's query optimizer works with views because they had read (somewhere on the internet) that the optimizer would not work with views. 
 
-While this might have been true at one point (I don't know), at least today, the optimizer works with views.
+While this might have been true at one point (I don't know), at least today (Jan 2020, or earlier), the optimizer works with views.
 
 Examples of old articles promoting the idea that the optimizer does not work with views include: 
 
