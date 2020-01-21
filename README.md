@@ -39,7 +39,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select i_item_id, i_current_price from item where i_category = 'Home' limit 10;
   ```
 
-  ![images/image1.png](images/image1.png)
+  <img src="images/image1.png" width="300">
 
 2. Now, let's find our query's ID from the **SVL_QLOG** view: 
 
@@ -47,7 +47,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select * from SVL_QLOG where userid=100 and substring like 'select i_item_id, i_current_price%';
   ```
 
-  ![images/image2.png](images/image2.png)
+  <img src="images/image2.png" width="500">
 
   Above, note that our query ID is `284`. 
 
@@ -57,7 +57,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select query, is_rrscan from SVL_QUERY_SUMMARY where query = 284 and is_rrscan = 't';
   ```
 
-  ![images/image3.png](images/image3.png)
+  <img src="images/image3.png" width="300">
 
   Above, we can see that a range-restricted scan on a table was used. In other words, our sort key of `i_category = 'Home` was leveraged by the query optimizer to avoid scanning unecessary rows. 
 
@@ -75,7 +75,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select i_item_id, i_current_price from item_view where i_category = 'Home' limit 10;
   ```
 
-  ![images/image4.png](images/image4.png)
+  <img src="images/image4.png" width="300">
 
 6. Again, find our query ID: 
 
@@ -83,7 +83,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select * from SVL_QLOG where substring like 'select i_item_id, i_current_price from item_v%';
   ```
 
-  ![images/image5.png](images/image5.png)
+  <img src="images/image5.png" width="300">
 
   Our query ID is `345`. 
 
@@ -93,7 +93,7 @@ While Redshift does support a standard `EXPLAIN` command to show a query plan, t
   select query, is_rrscan from SVL_QUERY_SUMMARY where userid=100 and query = 345 and is_rrscan = 't';
   ```
 
-  ![images/image6.png](images/image6.png)
+  <img src="images/image6.png" width="300">
 
 ## Hash keys
 
@@ -107,6 +107,6 @@ In the example below, I show the query plan to join the **item_view** view we cr
   );
   ```
 
-  ![images/image7.png](images/image7.png)
+  <img src="images/image7.png" width="800">
 
 Above, we can see that the query optimizer is correctly planning a HASH join between our view and table.
