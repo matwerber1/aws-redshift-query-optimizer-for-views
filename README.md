@@ -31,7 +31,7 @@ For this demonstration, I will use a subset of tables generated from the TPC-DS 
 
 ## Sort keys
 
-While Redshift does support a standard `EXPLAIN` command to show a query plan, the query plan will not indicate whether sort keys are being utilized to reduce the number of scanned rows in a query. Instead, you may inspect the `SVL_QUERY_SUMMARY` view and inspect the `is_rrscan` column. Here, a value of `y` indicates that a range-restricted scan occurred - in other words, that a sort key was leveraged to reduce the number of rows scanned.
+While Redshift's `EXPLAIN` will show you a query plan, the plan will not indicate whether sort keys are would be utilized to reduce the number of scanned rows in a query. Instead, you may inspect the `SVL_QUERY_SUMMARY` view and inspect the `is_rrscan` column. Here, a value of `y` indicates that a range-restricted scan occurred - in other words, that a sort key was leveraged to reduce the number of rows scanned.
 
 1. First, let's query our **item** table using the sort key `i_item_sk` in a WHERE predicate: 
 
